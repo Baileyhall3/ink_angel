@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../styling/styling.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel ="icon" type="image/x-icon" href="../images/ink_angel_logo.jpg">
+    <script src="../script/navbar-loader.js" defer></script>
+    <script src="../script/footer-loader.js" defer></script>
+    <title>Ink Angel</title>
+</head>
+<body>
+<div id="navbar-placeholder"></div>
+<div class="wrapper">
+    <div class="main_body">
+
+        <div class="home_body">
+            <img src="../images/kyle.jpg" alt="Kyle" width="500" height="500" float="left">
+            <div class="text-box1">
+                <h1>A FEW WORDS ABOUT US...</h1>
+                <br>
+                <p class="about">Ink Angel Tattoo studio is an established tattoo studio located in the seaside
+                town of South Shields. We have been making our lovely clients happy for over 7 years, always
+                providing a 5 star service.</p>
+                <br>
+                <p class="about">Here at Ink Angel, we recognise how important our clients are, and how much
+                tattoos mean to people. Whether it's to express yourself in the most out-there way or to bring
+                someone with meaning closer to your heart using art, we're all for it!</p>
+                <br>
+                <p class="about">Our tattooists have decades worth of experience between them, and rest assured you
+                will be in more than capable hands. So come down and see what all the fuss is about!</p>
+            </div>
+        </div>
+
+        <div class="images">
+            <h2>SOME OF OUR WORK</h2>
+            <div class="image-grid" id="imageGrid"></div>
+            <script src="../script/image-grid.js"></script>
+        </div>
+
+
+        <div class="services">
+            <h2>SERVICES</h2>
+            <div class="services-info">
+                <div class="info">
+
+                    <div class="col2">
+                        <h3>Tattoos</h3>
+                        <p class="desc">With 6 artists all possessing unique traits and specialities,
+                        we guarantee that your needs will be met. Whether it's fine line work
+                        with <a href="artists.html#kyleArtist">Kyle</a>, or a more realistic design with
+                            <a href="artists.html#gayleArtist">Gayle</a> - we have something for
+                        everyone!</p>
+                    </div>
+                    <div class="col2">
+                        <h3>Piercings</h3>
+                        <p class="desc">Don't fancy getting inked up? Well we also offer a piercing service
+                        starting at just £15 for small piercings. Kyle is your man for piercings, so
+                            <a href="https://www.facebook.com/InkAngelTattooStudio/?locale=en_GB" target="_blank">message
+                        now</a> to get booked in!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="artists">
+            <div class="text-box2">
+                <h2>MEET OUR ARTISTS</h2>
+                <div class="slideshow-container">
+
+                  <div class="mySlides fade">
+                    <img src="../images/gayle.png" style="width:100%">
+                    <div class="text">
+                        <a href="artists.html#gayleArtist">Gayle</a>
+                    </div>
+                  </div>
+
+                  <div class="mySlides fade">
+                    <img src="../images/kyle_selfie.png" style="width:100%">
+                    <div class="text">
+                        <a href="artists.html#kyleArtist">Kyle</a>
+                    </div>
+                  </div>
+
+                  <div class="mySlides fade">
+                    <img src="../images/kyle.jpg" style="width:100%">
+                    <div class="text">
+                        <a href="artists.html#kyleagainArtist">Kyle Again</a>
+                    </div>
+                  </div>
+
+                  <!-- Next and previous buttons -->
+                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+
+                <!-- The dots/circles -->
+                <div style="text-align:center">
+                  <span class="dot" onclick="currentSlide(1)"></span>
+                  <span class="dot" onclick="currentSlide(2)"></span>
+                  <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="shop-info">
+            <h2 >WHERE YOU CAN FIND US</h2>
+            <div class="directions">
+
+                <div class="col1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2288.6194853661164!2d-1.4340825228765446!3d54.99730524992702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487e6f1ff09351e3%3A0x5cc6deebd9fc99a5!2sInk%20Angel!5e0!3m2!1sen!2suk!4v1707071145287!5m2!1sen!2suk" width="550" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col1">
+                    <p class="desc1">We are located in the heart of South Shields on Burrow Street,
+                    just off of Fowler Street and right next to the new interchange in case you are travelling
+                    to us by public transport!</p>
+                    <br>
+                    <p class="desc1">There is also a car park across from the shop which will charge you
+                    £2.20 an hour to use.</p>
+                    <br>
+                    <p class="desc1">We welcome face-to-face consultations and enquiries, so why not pop
+                    down for a chat? Alternatively you can contact us on 0191 447 4343 or
+                        <a href="https://www.facebook.com/InkAngelTattooStudio/?locale=en_GB" target="_blank">message us</a>
+                    on Facebook.</p>
+                    <br>
+                    <p class="desc1">We hope to see you soon, and already can't wait to bring your ideas
+                    to life!</p>
+                    <br>
+                    <p class="desc1">Lots of love, the Ink Angel team x</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer-placeholder"></div>
+</body>
+</html>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" slideshow_active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " slideshow_active";
+}
+
+</script>
