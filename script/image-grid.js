@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imgContainer.classList.add("image-container");
 
         const imgElement = document.createElement("img");
-        imgElement.src = '../assets/' + image.file;
+        imgElement.src = 'assets/' + image.file;
         imgElement.classList.add("image");
 
         const overlay = document.createElement("div");
