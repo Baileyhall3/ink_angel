@@ -1,16 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-// Image grid script
-    const imageGrid = document.getElementById("imageGrid");
 
-    // const imageFiles = ['001.jpg',
-    //                             '002.jpg',
-    //                             '003.jpg',
-    //                             '004.jpg',
-    //                             '005.jpg',
-    //                             '006.jpg',
-    //                             '007.jpg',
-    //                             '008.jpg',
-    //                             '009.jpg'];
+    const imageGrid = document.getElementById("imageGrid");
 
     const images = [
         { file: '001.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
@@ -32,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         imgContainer.classList.add("image-container");
 
         const imgElement = document.createElement("img");
-        imgElement.src = '../images/' + image.file;
+        imgElement.src = '../assets/' + image.file;
         imgElement.classList.add("image");
 
         const overlay = document.createElement("div");
@@ -46,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const linkElement = document.createElement("a");
         linkElement.href = image.link;
-        linkElement.target = "_blank"; // Open link in a new tab
+        linkElement.target = "_blank";
         linkElement.textContent = "See More";
 
         overlayText.appendChild(linkElement);
