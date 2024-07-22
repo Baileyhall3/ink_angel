@@ -3,21 +3,21 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageGrid = document.getElementById("imageGrid");
 
     const images = [
-        { file: '001.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
-        { file: '002.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
-        { file: '003.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
-        { file: '004.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
-        { file: '005.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
-        { file: '006.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
-        { file: '007.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
-        { file: '008.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
-        { file: '009.jpg', text: 'By Gayle', link: 'https://www.instagram.com/gayle_poppynflo/' },
+        { file: '001.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
+        { file: '002.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
+        { file: '003.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
+        { file: '004.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
+        { file: '005.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
+        { file: '006.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
+        { file: '007.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
+        { file: '008.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
+        { file: '009.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
 
     ];
 
-    const shuffledImages = shuffleArray(images);
+    // const shuffledImages = shuffleArray(images);
 
-    shuffledImages.forEach(image => {
+    images.forEach(image => {
         const imgContainer = document.createElement("div");
         imgContainer.classList.add("image-container");
 
@@ -46,11 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
         imageGrid.appendChild(imgContainer);
     });
 
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
+    // function shuffleArray(array) {
+    //     for (let i = array.length - 1; i > 0; i--) {
+    //         const j = Math.floor(Math.random() * (i + 1));
+    //         [array[i], array[j]] = [array[j], array[i]];
+    //     }
+    //     return array;
+    // }
 });

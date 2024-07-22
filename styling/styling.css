@@ -352,3 +352,12 @@ p{
   from {opacity: .4}
   to {opacity: 1}
 }
+
+.image-overlay .overlay-text a {
+    color: white; 
+    text-decoration: none; 
+}
+
+.image-overlay .overlay-text a:hover {
+    text-decoration: underline;
+}
