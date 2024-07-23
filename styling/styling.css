@@ -161,16 +161,13 @@ p{
     text-align: center;
 }
 
-
 .images{
     display: flex;
     flex-wrap: wrap;
     /* overflow: hidden; */
     padding-top: 50px;
-}
-.image{
-    width: 100%;
-    height: auto;
+    align-content: center;
+    justify-content: center;
 }
 .image-grid {
     display: grid;
@@ -181,6 +178,23 @@ p{
 .image-container {
     text-align: center;
     position: relative;
+    cursor: pointer;
+}
+.image-container a {
+    color: #f2f2f2;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.image-container a:hover {
+    color: blueviolet;
+    transition: .3s ease-out;
+}
+.image-container img {
+    transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+    transform: scale(1.05);
 }
 .image-text {
     margin-bottom: 10px;
@@ -222,7 +236,7 @@ p{
 }
 .artist-grid img {
     width: 100%;
-    height: 100%;
+    height: 200px;
     border-radius: 8px;
 }
 

@@ -27,13 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
         instagramIcon.classList.add("fa", "fa-instagram");
         instagramIcon.style.fontSize = "18px";
         instagramIcon.style.color = "white";
+        instagramIcon.style.marginRight = "8px";
 
         const instagramLink = document.createElement("a");
         instagramLink.href = image.instaLink;
         instagramLink.target = "_blank";
-        instagramLink.textContent = image.instaHandle;
 
-        instagramLink.appendChild(instagramIcon);
+        imgContainer.addEventListener('click', () => {
+            window.location.href = image.pageLink;
+        });
+
+        instagramLink.appendChild(instagramIcon); 
+        instagramLink.append(image.instaHandle); 
         imgContainer.appendChild(textElement);
         imgContainer.appendChild(imgElement);
         imgContainer.appendChild(instagramLink);
