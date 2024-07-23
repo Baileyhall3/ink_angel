@@ -165,8 +165,12 @@ p{
 .images{
     display: flex;
     flex-wrap: wrap;
-    overflow: hidden;
+    /* overflow: hidden; */
     padding-top: 50px;
+}
+.image{
+    width: 100%;
+    height: auto;
 }
 .image-grid {
     display: grid;
@@ -175,7 +179,12 @@ p{
     padding: 0;
 }
 .image-container {
+    text-align: center;
     position: relative;
+}
+.image-text {
+    margin-bottom: 10px;
+    color: white;
 }
 .image-grid img {
     width: 100%;
@@ -203,6 +212,18 @@ p{
     color: white;
     font-size: 18px;
     text-align: center;
+}
+
+.artist-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 0;
+}
+.artist-grid img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
 }
 
 .services{
@@ -237,6 +258,7 @@ p{
 
 }
 .shop-info{
+    margin-top: 50px;
     background-color: white;
     overflow: hidden;
     position: relative;
