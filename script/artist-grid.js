@@ -38,6 +38,6 @@ document.addEventListener("DOMContentLoaded", function () {
         imgContainer.appendChild(imgElement);
         imgContainer.appendChild(instagramLink);
         artistGrid.appendChild(imgContainer);
-    });
+    })
 
 });
