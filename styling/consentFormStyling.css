@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+
+* {
+    box-sizing: border-box; /* Ensure consistent box-sizing */
+    font-family: 'Poppins', 'sans-serif';
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: white;
+}
+
+.main_body {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 100%; /* Ensure it adjusts to screen size */
+}
+
+.home_body {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    padding-top: 100px;
+}
+
+.full-container {
+    border: 2px solid blueViolet;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto; 
+    padding: 20px; 
+}
+
+h2{
+  font-size: 28px;
+  display: flex;
+  margin-bottom: 0;
+}
+
+p {
+  display: flex;
+  padding-bottom: 25px;
+  margin-top: 0;
+}
+
+form {
+    width: 100%;
+    display: grid;
+/*     justify-content: center;
+    align-items: center; */
+    gap: 15px; /* Add gap for spacing */
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    flex: 0 0 100%;
+    margin-bottom: 15px;
+}
+
+.form-group .error-text {
+    font-size: 14px;
+    color: red;
+    text-align: left;
+    margin: -5px 0 10px;
+    display: none;
+}
+
+.form-group.error .error-text {
+    display: block;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.item {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid blueViolet;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.item:focus {
+    border-color: blueViolet;
+    outline: none;
+}
+
+.item .error {
+    border: 2px solid red;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: blueViolet;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    width: auto; /* Auto width to fit content */
+}
+
+button:hover {
+    background-color: darkviolet;
+}
+
+canvas {
+  border: 2px solid black;
+  border-color: blueViolet;
+  background-color: white;
+}
+
+.form-row label {
+  margin-right: 1rem;
+}
+
+.form-row .radio-group {
+  display: flex;
+  gap: 1rem;
+}
