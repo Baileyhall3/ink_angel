@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const artistGrid = document.getElementById("artistGrid");
 
     const images = [
-        { file: 'gayle.png', text: 'Gayle Brown', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@gayle_poppynflo' },
+        { file: 'gayle.png', text: 'Gayle Brown', pageLink: 'kyle.html', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@gayle_poppynflo' },
         { file: 'kyle.jpg', text: 'Kyle Moore', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
         { file: 'kyle_selfie.png', text: 'Kyle Selfie', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
         { file: 'kyle.jpg', text: 'Kyle Dudley', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },

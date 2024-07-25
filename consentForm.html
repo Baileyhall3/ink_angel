@@ -16,74 +16,128 @@
             <div class="main_body">
                 <div class="home_body">
                     <div class="full-container">
-                        <h2>Consent to Tattoo Procedure</h2>
-                        <p>This form must be completed prior to your appointment.</p>
-                        <form id="consultationForm" action="#">
+                        <div class="form-container" id="form-container">
 
-                            <input type="hidden" name="access_key" value="b6f49a91-3b71-4493-bbd7-e4c16bd8a3cf">
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="fullName">Full Name*</label>
-                                    <input class="item" type="text" id="fullName" name="fullName" required>
-                                    <div class="error-text">Name cannot be blank</div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="email">Email Address*</label>
-                                    <input class="item" type="email" id="email" name="email" required>
-                                    <div class="error-text email">Email cannot be blank</div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="address">Address*</label>
-                                <textarea class="item" id="address" name="address" required> </textarea>
-                                <div class="error-text">Address cannot be blank</div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="phone">Phone Number*</label>
-                                    <input class="item" type="tel" id="phone" name="phone" required>
-                                    <div class="error-text">Phone number cannot be blank</div>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="dob">Date of Birth*</label>
-                                    <input class="item" type="date" id="dob" name="dob" required>
-                                    <div class="error-text">DOB cannot be blank</div>
-                                </div>
-                            </div>
-                      
-                            <div class="form-row">
-                                Have you ever suffered from the following?
+                            <div class="title-img">
+                                <h2>Consent to Tattoo Procedure</h2>
+                                <img src="images/Ink_Angel_Logo_Black.png" alt="logo" class="top-right-logo" width="100" height="100">
                             </div>
                             
-                            <div id="questionsContainer"></div>
-                            
-                            <div class="form-row">
-                                If you answered yes to any of the above, you should consult a GP before your appointment.
-                            </div>
-                      
-                            <div class="form-row">
+                            <p>This form must be completed prior to your appointment.</p>
+                            <form id="consultationForm" action="#">
+
+                                <input type="hidden" name="access_key" value="b6f49a91-3b71-4493-bbd7-e4c16bd8a3cf">
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="fullName">Full Name*</label>
+                                        <input class="item" type="text" id="fullName" name="fullName" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email Address*</label>
+                                        <input class="item" type="email" id="email" name="email" required>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
-                                    <label for="signature">Signature:</label>
-                                    <canvas id="signatureCanvas" width="300" height="150"></canvas>
+                                    <label for="address">Address*</label>
+                                    <textarea class="item" id="address" name="address" required> </textarea>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number*</label>
+                                        <input class="item" type="tel" id="phone" name="phone" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="dob">Date of Birth*</label>
+                                        <input class="item" type="date" id="dob" name="dob" required>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-row">
+                                    Have you ever suffered from the following? Tick yes where applicable
+                                </div>
+                                
+                                <div id="questionsContainer"></div>
+                                
+                                <div class="form-row">
+                                    If you answered yes to any of the above, you should consult a GP before your appointment.
+                                </div>
+                                
+                                <p2>Please read the following carefully:</p2>
+
+                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px;">I acknowledge by signing this agreement that I have been given opportunity to ask any questions I have about the
+                                    tattoo and that all of my questions have been answered. I acknowledge I have been advised of the facts and matters
+                                    below and I agree as follows:</p>
+                                <div class="ack-row">
+                                    <p>&#8226; If I have any condition that might affect the healing of this tattoo, I will advise my tattooer.</p>
+                                </div>
+                                <div class="ack-row">
+                                    <p>&#8226; I am not pregnant or nursing, I am not under the influence of alcohol or drugs.</p>
+                                </div>
+                                <div class="ack-row">
+                                    <p>&#8226; I acknowledge that infection is always possible as a result of the obtaining of a tattoo, particularly in the event that I
+                                        do not take care of my tattoo. I have received aftercare instructions and I agree to follow them while my tattoo is
+                                        healing. I agree that any touch-up work needed, due to my own negligence, will be done at my own expense.
+                                    </p>
+                                </div>
+                                <div class="ack-row">
+                                    <p>&#8226; I realise that variations in colour and design may exist between any tattoo as selected by me and as ultimately applied
+                                        to my body. I understand that if my skin colour is dark, the colours will not appear as bright as they do on light skin.
+                                    </p>
+                                </div>
+                                <div class="ack-row">
+                                    <p>&#8226; I acknowledge that a tattoo is a permanent change to my appearance. To my knowledge, I do not have a physical,
+                                        mental or medical impairment or disability which might affect my judgement in deciding to proceed with the tattoo.
+                                    </p>
+                                </div>
+                                <div class="ack-row">
+                                    <p>&#8226; I acknowledge I am over the age of 18 and that I have truthfully represented to my tattooer that the obtaining of a
+                                        tattoo is by my choice alone. I consent to the application of the tattoo and to any actions or conduct of the staff of
+                                        the tattoo shop necessary to perform the tattoo procedure.
+                                    </p>
+                                </div>
+                                <div class="ack-row">
+                                    <p>&#8226; I acknowledge that any damage to my own personal property due to the process of tattooing, is my own
+                                        responsibility.
+                                    </p>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="radio-group" style="padding-top: 10px; gap: 5px;">
+                                        <input type="checkbox" id="ack" name="ack" value="Acknowledgement" required>
+                                        <label for="ack"> I acknowledge the above</label>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="signature">Signature:</label>
+                                        <canvas id="signatureCanvas"></canvas>
+                                        <input class="item" type="hidden" name="signature" id="signatureInput" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="btn-group">
+                                    <button type="submit">Submit</button>
                                     <button type="button" id="clearCanvas">Clear</button>
-                                    <input class="item" type="hidden" name="signature" id="signatureInput">
-                                    <div class="error-text">Signature cannot be blank</div>
                                 </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <button type="submit">Submit</button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
+
+                        <div id="success-container" style="display: none;">
+                            <h2>Thank You!</h2>
+                            <p>Your consent form has been submitted, we hope to see you soon!</p>
+                            <a href="index.html">Return to Ink Angel website</a>
+                        </div>
+
                     </div>
                 </div>
             </div>
