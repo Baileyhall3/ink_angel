@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const successContainer = document.getElementById('success-container');
 
     // For canvas
-    const desiredWidth = 750;
+    const desiredWidth = 100;
     const desiredHeight = 300; 
 
-    canvas.style.width = desiredWidth + "px";
+    canvas.style.width = desiredWidth + "%";
     canvas.style.height = desiredHeight + "px";
 
     const dpr = window.devicePixelRatio || 1;
@@ -216,9 +216,24 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     canvas.addEventListener("mousedown", startDrawing);
-    canvas.addEventListener("mouseup", endDrawing);
     canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", endDrawing);
     canvas.addEventListener("mouseout", endDrawing);
+
+    canvas.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        startDrawing();
+    }, false);
+    
+    canvas.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+        draw();
+    }, false);
+    
+    canvas.addEventListener('touchend', function(e) {
+        e.preventDefault();
+        endDrawing();
+    }, false);
     
     clearBtn.addEventListener("click", () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);

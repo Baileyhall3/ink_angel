@@ -17,7 +17,7 @@
     max-width: 1100px;
     margin: 0 auto;
     overflow: hidden;
-    width: 100%; /* Ensure it adjusts to screen size */
+    width: 100%;
 }
 
 .home_body {
@@ -50,15 +50,15 @@ p {
 .title-img {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Adjust alignment */
+    justify-content: space-between;
 }
 
 .top-right-logo {
-    top: 10px; /* Adjust the distance from the top */
-    right: 10px; /* Adjust the distance from the right */
-    width: 100px; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
-    z-index: 10; /* Ensure it appears above other elements */
+    top: 10px; 
+    right: 10px;
+    width: 100px; 
+    height: auto;
+    z-index: 10;
 }
 
 p2 {
@@ -69,7 +69,7 @@ p2 {
 
 form {
     width: 100%;
-    display: grid;
+    /* display: grid; */
 /*     justify-content: center;
     align-items: center; */
     gap: 15px; /* Add gap for spacing */

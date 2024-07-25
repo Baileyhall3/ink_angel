@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     images.forEach(image => {
         const imgContainer = document.createElement("div");
-        imgContainer.classList.add("image-container");
+        imgContainer.classList.add("image-container-ease");
 
         const textElement = document.createElement("p");
         textElement.classList.add("image-text");
