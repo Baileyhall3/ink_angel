@@ -188,6 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
     ctx.scale(dpr, dpr);
 
     function startDrawing(event) {
+        event.preventDefault();
         drawing = true;
         draw(event);
     }
@@ -198,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     function draw(event) {
+        event.preventDefault();
         if (!drawing) return;
     
         ctx.lineWidth = 2;
@@ -220,20 +222,11 @@ document.addEventListener('DOMContentLoaded', function () {
     canvas.addEventListener("mouseup", endDrawing);
     canvas.addEventListener("mouseout", endDrawing);
 
-    canvas.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        startDrawing();
-    }, false);
+    canvas.addEventListener('touchstart', startDrawing);
     
-    canvas.addEventListener('touchmove', function(e) {
-        e.preventDefault();
-        draw();
-    }, false);
+    canvas.addEventListener('touchmove', draw);
     
-    canvas.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        endDrawing();
-    }, false);
+    canvas.addEventListener('touchend', endDrawing);
     
     clearBtn.addEventListener("click", () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
