@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
         
-    const canvas = document.getElementById("signatureCanvas");
-    const ctx = canvas.getContext("2d");
+    // const canvas = document.getElementById("signatureCanvas");
+    // const ctx = canvas.getContext("2d");
     const clearBtn = document.getElementById("clearCanvas");
     const formEmail = document.querySelector("form");
     const form = document.getElementById("consultationForm");
@@ -130,16 +130,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // Signature drawing
     const dpr = window.devicePixelRatio || 1;
 
-    const rect = canvas.getBoundingClientRect();
-    const displayWidth = rect.width;
-    const displayHeight = rect.height;
+    const canvas = document.getElementById('signatureCanvas');
+    const ctx = canvas.getContext('2d');
 
-    canvas.width = displayWidth * dpr;
-    canvas.height = displayHeight * dpr;
+    function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+        ctx.scale(dpr, dpr);
+    }
+
+    // Initial canvas setup
+    resizeCanvas();
 
     let drawing = false;
     let hasDrawn = false;
-    ctx.scale(dpr, dpr);
 
     function startDrawing(event) {
         event.preventDefault();
@@ -147,48 +152,53 @@ document.addEventListener('DOMContentLoaded', function () {
         hasDrawn = true;
         draw(event);
     }
-    
+
     function endDrawing() {
         drawing = false;
         ctx.beginPath();
     }
-    
+
     function draw(event) {
         event.preventDefault();
         if (!drawing) return;
-    
-        ctx.lineWidth = 2;
-        ctx.lineCap = "round";
-    
+
         const rect = canvas.getBoundingClientRect();
         const scaleX = canvas.width / rect.width;
         const scaleY = canvas.height / rect.height;
-        const x = (event.clientX - rect.left) * scaleX;
-        const y = (event.clientY - rect.top) * scaleY;
-    
+
+        let x, y;
+        if (event.touches) {
+            // Touch event
+            const touch = event.touches[0];
+            x = (touch.clientX - rect.left) * scaleX;
+            y = (touch.clientY - rect.top) * scaleY;
+        } else {
+            // Mouse event
+            x = (event.clientX - rect.left) * scaleX;
+            y = (event.clientY - rect.top) * scaleY;
+        }
+
+        ctx.lineWidth = 2;
+        ctx.lineCap = "round";
+
         ctx.lineTo(x, y);
         ctx.stroke();
         ctx.beginPath();
         ctx.moveTo(x, y);
     }
-    
+
+    // Event listeners
     canvas.addEventListener("mousedown", startDrawing);
-    canvas.addEventListener('touchstart', startDrawing);
-
     canvas.addEventListener("mousemove", draw);
-    canvas.addEventListener("touchmove", function (e) {
-        var touch = e.touches[0];
-        var mouseEvent = new MouseEvent("mousemove", {
-          clientX: touch.clientX,
-          clientY: touch.clientY
-        });
-        draw(mouseEvent);
-      }, false);
-
     canvas.addEventListener("mouseup", endDrawing);
     canvas.addEventListener("mouseout", endDrawing);
 
+    canvas.addEventListener('touchstart', startDrawing);
+    canvas.addEventListener('touchmove', draw);
     canvas.addEventListener('touchend', endDrawing);
+
+    // Handle canvas resizing
+    window.addEventListener('resize', resizeCanvas);
     
     clearBtn.addEventListener("click", () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -247,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const noInput = document.querySelector(`input[name="question${index}"][value="no"]`);
             if (!yesInput.checked && !noInput.checked) {
                 allQuestionsAnswered = false;
-                return; // Break out of the loop if any question is unanswered
+                return; 
             }
         });
 
