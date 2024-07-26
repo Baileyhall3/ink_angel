@@ -87,7 +87,7 @@ form {
     margin-bottom: 15px;
 }
 
-.form-group .error-text {
+/* .form-group .error-text {
     font-size: 14px;
     color: red;
     text-align: left;
@@ -97,12 +97,12 @@ form {
 
 .form-group.error .error-text {
     display: block;
-}
+} */
 
 label {
     display: block;
     /* margin-bottom: 5px; */
-    font-weight: bold;
+    /* font-weight: bold; */
     max-width: 500px;
 }
 
@@ -119,8 +119,14 @@ label {
     outline: none;
 }
 
-.item .error {
+.item.error {
     border: 2px solid red;
+}
+
+.error-message {
+    color: red;
+    display: none;
+    font-size: 14px;
 }
 
 textarea {

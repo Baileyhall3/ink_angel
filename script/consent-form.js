@@ -12,19 +12,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const dob = document.getElementById("dob");
     const ack = document.getElementById("ack");
     const signatureInput = document.getElementById("signatureInput");
+    const signatureError = document.getElementById('signatureError');
     const formContainer = document.getElementById('form-container');
     const successContainer = document.getElementById('success-container');
 
-    // For canvas
-    const desiredWidth = 100;
-    const desiredHeight = 300; 
-
-    canvas.style.width = desiredWidth + "%";
-    canvas.style.height = desiredHeight + "px";
-
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = desiredWidth * dpr;
-    canvas.height = desiredHeight * dpr;
+    const requiredFields = document.querySelectorAll('.form-group .item, .radio-group .ackItem');
 
     // Radio questions
     const questions = [
@@ -59,8 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         yesInput.type = 'radio';
         yesInput.name = `question${index}`;
         yesInput.value = 'yes';
-        yesInput.required = true;
-        yesInput.class = 'item';
+        // yesInput.className = 'item';
         yesLabel.prepend(yesInput);
 
         const noLabel = document.createElement('label');
@@ -69,8 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         noInput.type = 'radio';
         noInput.name = `question${index}`;
         noInput.value = 'no';
-        noInput.required = true;
-        noInput.class = 'item';
+        // noInput.className = 'item';
         noLabel.prepend(noInput);
 
         radioGroup.appendChild(yesLabel);
@@ -79,6 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
         formRow.appendChild(radioGroup);
         questionsContainer.appendChild(formRow);
     });
+
+    const questionsError = document.createElement('span');
+    questionsError.classList.add('error-message');
+    questionsError.innerText = 'One or more items unchecked.';
+    questionsError.style.display = 'none';
+    questionsContainer.appendChild(questionsError);
 
     function sendEmail() {
 
@@ -115,10 +111,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }).then(
             message => {
                 if (message == "OK") {
-                    // form.reset()
-                    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    // formContainer.style.display = 'none';
-                    // successContainer.style.display = 'block';
                 }
                 else {
                     alert(message);
@@ -135,61 +127,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     }
 
-    function checkInputs() {
-        let isValid = true;
-        let firstInvalidField = null;
-
-        const requiredInputs = document.querySelectorAll('#consultationForm input[required], #consultationForm textarea[required], #consultationForm input[type="email"], #consultationForm input[type="date"], #consultationForm input[type="tel"]');
-        
-        requiredInputs.forEach(input => {
-            if ((input.type === "checkbox" || input.type === "radio") && !input.checked) {
-                isValid = false;
-                firstInvalidField = firstInvalidField || input;
-                return;
-            }
-            if (input.value.trim() === '') {
-                isValid = false;
-                firstInvalidField = firstInvalidField || input;
-            }
-        });
-
-        if (firstInvalidField) {
-            firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            window.scrollBy(0, -50);
-            firstInvalidField.focus();
-        }
-
-        return isValid;
-    }
-
-    function checkEmail() {
-        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        const errorTxtEmail = document.querySelector(".error-text.email")
-
-        if (!email.value.match(emailRegex)) {
-            email.classList.add("error");
-            email.parentElement.classList.add("error");
-
-            if (email.value != "") {
-                errorTxtEmail.innerText = "Enter a valid email address";
-            }
-            else {
-                errorTxtEmail.innerText = "Email address cannot be blank";
-            }
-        }
-        else {
-            email.classList.remove("error");
-            email.parentElement.classList.remove("error");
-        }
-    }
-
     // Signature drawing
+    const dpr = window.devicePixelRatio || 1;
+
+    const rect = canvas.getBoundingClientRect();
+    const displayWidth = rect.width;
+    const displayHeight = rect.height;
+
+    canvas.width = displayWidth * dpr;
+    canvas.height = displayHeight * dpr;
+
     let drawing = false;
+    let hasDrawn = false;
     ctx.scale(dpr, dpr);
 
     function startDrawing(event) {
         event.preventDefault();
         drawing = true;
+        hasDrawn = true;
         draw(event);
     }
     
@@ -206,8 +161,8 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.lineCap = "round";
     
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;    // scale x
-        const scaleY = canvas.height / rect.height;  // scale y
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
         const x = (event.clientX - rect.left) * scaleX;
         const y = (event.clientY - rect.top) * scaleY;
     
@@ -218,44 +173,113 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener('touchstart', startDrawing);
+
     canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("touchmove", function (e) {
+        var touch = e.touches[0];
+        var mouseEvent = new MouseEvent("mousemove", {
+          clientX: touch.clientX,
+          clientY: touch.clientY
+        });
+        draw(mouseEvent);
+      }, false);
+
     canvas.addEventListener("mouseup", endDrawing);
     canvas.addEventListener("mouseout", endDrawing);
 
-    canvas.addEventListener('touchstart', startDrawing);
-    
-    canvas.addEventListener('touchmove', draw);
-    
     canvas.addEventListener('touchend', endDrawing);
     
     clearBtn.addEventListener("click", () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         form.reset();
+        hasDrawn = false;
     });
 
+    function createErrorMessage(inputElement) {
+        let errorSpan = inputElement.parentNode.querySelector('.error-message');
+        if (!errorSpan) {
+            errorSpan = document.createElement('span');
+            errorSpan.classList.add('error-message');
+            errorSpan.innerText = 'This field is required.';
+            inputElement.parentNode.appendChild(errorSpan);
+        }
+    }
+
+    requiredFields.forEach(input => {
+        createErrorMessage(input);
+
+        // Remove error message and styling when user inputs data
+        input.addEventListener('input', () => {
+            if (input.type === 'checkbox') {
+                if (input.checked) {
+                    input.classList.remove('error');
+                    input.parentNode.querySelector('.error-message').style.display = 'none';
+                }
+            } else if (input.value.trim()) {
+                input.classList.remove('error');
+                input.parentNode.querySelector('.error-message').style.display = 'none';
+            }
+        });
+    });
 
     formEmail.addEventListener("submit", (e) => {
         e.preventDefault();
-        // checkInputs();
-
-        // if (checkInputs()) {
-        //     sendEmail();
-        // }
-
-        sendEmail().then(response => {
-            if (response.success) {
-                form.reset()
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                formContainer.style.display = 'none';
-                successContainer.style.display = 'block';
-            } else {
-                alert('There was an error submitting your form. Please try again.');
-            }
-        }).catch(error => {
-            console.error('Error submitting form:', error);
-            alert('There was an error submitting your form. Please try again.');
-        });
         
+        let formIsValid = true;
+
+        requiredFields.forEach(input => {
+            const errorSpan = input.parentNode.querySelector('.error-message');
+
+            if ((input.type === 'checkbox' && !input.checked) || (input.type !== 'checkbox' && !input.value.trim())) {
+                input.classList.add('error');
+                errorSpan.style.display = 'block';
+                formIsValid = false;
+            } else {
+                input.classList.remove('error');
+                errorSpan.style.display = 'none';
+            }
+        });
+
+        let allQuestionsAnswered = true;
+        questions.forEach((question, index) => {
+            const yesInput = document.querySelector(`input[name="question${index}"][value="yes"]`);
+            const noInput = document.querySelector(`input[name="question${index}"][value="no"]`);
+            if (!yesInput.checked && !noInput.checked) {
+                allQuestionsAnswered = false;
+                return; // Break out of the loop if any question is unanswered
+            }
+        });
+
+        if (!allQuestionsAnswered) {
+            questionsError.style.display = 'block';
+            formIsValid = false;
+        } else {
+            questionsError.style.display = 'none';
+        }
+
+        if (!hasDrawn) {
+            signatureError.style.display = 'block';
+            formIsValid = false;
+        } else {
+            signatureError.style.display = 'none';
+        }
+
+        if (formIsValid) {
+            sendEmail().then(response => {
+                if (response.success) {
+                    formEmail.reset();
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    formContainer.style.display = 'none';
+                    successContainer.style.display = 'block';
+                } else {
+                    alert('There was an error submitting your form. Please try again.');
+                }
+            }).catch(error => {
+                console.error('Error submitting form:', error);
+                alert('There was an error submitting your form. Please try again.');
+            });
+        }
     });
 
 });
