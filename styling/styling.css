@@ -186,6 +186,17 @@ p{
     flex: 1;
 }
 
+.contact {
+    color: white;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.contact a {
+    color: blueviolet;
+    text-decoration: none;
+}
+
 .about {
     color: white;
     font-weight: 400;
@@ -336,6 +347,12 @@ p{
     flex-wrap: wrap;
     align-items: baseline;
     padding: 25px;
+}
+.text-box {
+    margin-left: 10px;
+    width: 80%;
+    box-sizing: border-box; 
+    padding: 20px;
 }
 .text-box1 {
     margin-left: 10px;

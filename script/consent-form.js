@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function sendEmail() {
 
-        let bodyMessage  = `Consultation Form Details
+        let bodyMessage  = `Consent Form Details
                             <br><br>
                             Full Name: ${fullName.value} <br>
                             Email: ${email.value} <br>
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
             SecureToken: "1e5ad655-c276-46c2-8216-ef11746f18ff", 
             To : 'baileyhall271001@gmail.com',
             From : "baileyhall271001@gmail.com",
-            Subject : `Consultation Form Submitted for ${fullName.value}`,
+            Subject : `Consent Form Submitted for ${fullName.value}`,
             Body : bodyMessage,
             Attachments : [
                 {

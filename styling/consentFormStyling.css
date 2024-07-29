@@ -33,6 +33,7 @@
     max-width: 800px; 
     margin: 0 auto; 
     padding: 20px; 
+    background-color: white;
 }
 
 h2{
@@ -42,7 +43,6 @@ h2{
 }
 
 p {
-  display: flex;
   padding-bottom: 25px;
   margin-top: 0;
 }
@@ -69,10 +69,10 @@ p2 {
 
 form {
     width: 100%;
-    /* display: grid; */
-/*     justify-content: center;
-    align-items: center; */
-    gap: 15px; /* Add gap for spacing */
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     font-size: 16px;
 }
 
@@ -84,6 +84,11 @@ form {
 
 .form-group {
     flex: 0 0 100%;
+    margin-bottom: 15px;
+}
+
+.form-group-consult {
+    flex: 0 0 48%;
     margin-bottom: 15px;
 }
 
@@ -180,4 +185,8 @@ canvas {
 
 .ack-row p {
     padding-bottom: 0px;
+}
+
+.text-box a {
+    color: blueviolet;
 }
