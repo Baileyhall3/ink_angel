@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Fetch the content of navbar.html and insert it into the placeholder
     fetch("navbar.html")
         .then(response => response.text())
         .then(html => {
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Get the link elements
             var homeLink = document.getElementById("home-link");
             var aboutLink = document.getElementById("about-link");
-            // var artistsLink = document.getElementById("artists-link");
+            var artistsLink = document.getElementById("artists-link");
             var contactLink = document.getElementById("contact-link");
 
             // Determine which link should be active based on the current page
@@ -36,11 +35,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 homeLink.classList.add("active");
             } else if (currentPath.includes("about.html")) {
                 aboutLink.classList.add("active");
-            // } else if (currentPath.includes("artists.html")) {
-            //     artistsLink.classList.add("active");
+            } else if (currentPath.includes("artists.html")) {
+                artistsLink.classList.add("active");
             } else if (currentPath.includes("contact.html")) {
                 contactLink.classList.add("active");
             }
+
+            // Hamburger menu toggle
+            var hamburger = document.getElementById("hamburger");
+            var navMenu = document.getElementById("nav-menu");
+
+            hamburger.addEventListener("click", function () {
+                navMenu.classList.toggle("show");
+            });
         })
         .catch(error => console.error('Error loading navbar:', error));
 });

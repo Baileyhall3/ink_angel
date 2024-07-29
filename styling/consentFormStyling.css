@@ -87,18 +87,6 @@ form {
     margin-bottom: 15px;
 }
 
-/* .form-group .error-text {
-    font-size: 14px;
-    color: red;
-    text-align: left;
-    margin: -5px 0 10px;
-    display: none;
-}
-
-.form-group.error .error-text {
-    display: block;
-} */
-
 label {
     display: block;
     /* margin-bottom: 5px; */
@@ -107,11 +95,21 @@ label {
 }
 
 .item {
-    width: 100%;
+    width: 100%; 
     padding: 10px;
     border: 2px solid blueViolet;
     border-radius: 4px;
     box-sizing: border-box;
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;         
+}
+
+.item[type="date"] {
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;         
+    width: 100%;
 }
 
 .item:focus {

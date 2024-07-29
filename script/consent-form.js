@@ -142,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initial canvas setup
     resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     let drawing = false;
     let hasDrawn = false;
@@ -159,12 +160,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function draw(event) {
-        event.preventDefault();
         if (!drawing) return;
 
+        event.preventDefault();
         const rect = canvas.getBoundingClientRect();
-        const scaleX = canvas.width / rect.width;
-        const scaleY = canvas.height / rect.height;
+
+        const scaleX = canvas.width / (rect.width * dpr);
+        const scaleY = canvas.height / (rect.height * dpr);
 
         let x, y;
         if (event.touches) {
@@ -187,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ctx.moveTo(x, y);
     }
 
-    // Event listeners
+    // Event listeners for canvas
     canvas.addEventListener("mousedown", startDrawing);
     canvas.addEventListener("mousemove", draw);
     canvas.addEventListener("mouseup", endDrawing);
@@ -197,8 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
     canvas.addEventListener('touchmove', draw);
     canvas.addEventListener('touchend', endDrawing);
 
-    // Handle canvas resizing
-    window.addEventListener('resize', resizeCanvas);
     
     clearBtn.addEventListener("click", () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -206,75 +206,130 @@ document.addEventListener('DOMContentLoaded', function () {
         hasDrawn = false;
     });
 
-    function createErrorMessage(inputElement) {
+    function createErrorMessage(inputElement, message) {
         let errorSpan = inputElement.parentNode.querySelector('.error-message');
         if (!errorSpan) {
             errorSpan = document.createElement('span');
             errorSpan.classList.add('error-message');
-            errorSpan.innerText = 'This field is required.';
             inputElement.parentNode.appendChild(errorSpan);
         }
+        errorSpan.innerText = message;
+        errorSpan.style.display = 'block';
+    }
+    
+    function removeErrorMessage(inputElement) {
+        inputElement.classList.remove('error');
+        const errorSpan = inputElement.parentNode.querySelector('.error-message');
+        if (errorSpan) {
+            errorSpan.style.display = 'none';
+        }
+    }
+    
+    function isValidEmail(email) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    }
+    
+    function isValidPhoneNumber(phone) {
+        return phone.length <= 13;
+    }
+    
+    function isOver18(dob) {
+        const birthDate = new Date(dob);
+        const today = new Date();
+        const age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+    
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            return age - 1 >= 18;
+        }
+        return age >= 18;
     }
 
     requiredFields.forEach(input => {
-        createErrorMessage(input);
-
         // Remove error message and styling when user inputs data
         input.addEventListener('input', () => {
             if (input.type === 'checkbox') {
                 if (input.checked) {
-                    input.classList.remove('error');
-                    input.parentNode.querySelector('.error-message').style.display = 'none';
+                    removeErrorMessage(input);
                 }
             } else if (input.value.trim()) {
-                input.classList.remove('error');
-                input.parentNode.querySelector('.error-message').style.display = 'none';
+                removeErrorMessage(input);
             }
         });
     });
-
+    
     formEmail.addEventListener("submit", (e) => {
         e.preventDefault();
         
         let formIsValid = true;
+        let firstInvalidInput = null;
 
+    
         requiredFields.forEach(input => {
-            const errorSpan = input.parentNode.querySelector('.error-message');
-
-            if ((input.type === 'checkbox' && !input.checked) || (input.type !== 'checkbox' && !input.value.trim())) {
+            const value = input.value.trim();
+            let errorMessage = '';
+    
+            if (input.type === 'checkbox' && !input.checked) {
+                errorMessage = 'This field is required.';
+                if (!firstInvalidInput) {
+                    firstInvalidInput = input;
+                }
+            } else if (input.type !== 'checkbox' && !value) {
+                errorMessage = 'This field is required.';
+                if (!firstInvalidInput) {
+                    firstInvalidInput = input;
+                }
+            } else if (input.type === 'email' && !isValidEmail(value)) {
+                errorMessage = 'Please enter a valid email address.';
+                if (!firstInvalidInput) {
+                    firstInvalidInput = input;
+                }
+            } else if (input.type === 'tel' && !isValidPhoneNumber(value)) {
+                errorMessage = 'Phone number must be no more than 13 characters.';
+                if (!firstInvalidInput) {
+                    firstInvalidInput = input;
+                }
+            } else if (input.type === 'date' && !isOver18(value)) {
+                errorMessage = 'You must be over 18 years old.';
+                if (!firstInvalidInput) {
+                    firstInvalidInput = input;
+                }
+            }
+    
+            if (errorMessage) {
                 input.classList.add('error');
-                errorSpan.style.display = 'block';
+                createErrorMessage(input, errorMessage);
                 formIsValid = false;
             } else {
-                input.classList.remove('error');
-                errorSpan.style.display = 'none';
+                removeErrorMessage(input);
             }
         });
-
+    
         let allQuestionsAnswered = true;
         questions.forEach((question, index) => {
             const yesInput = document.querySelector(`input[name="question${index}"][value="yes"]`);
             const noInput = document.querySelector(`input[name="question${index}"][value="no"]`);
             if (!yesInput.checked && !noInput.checked) {
                 allQuestionsAnswered = false;
-                return; 
+                return;
             }
         });
-
+    
         if (!allQuestionsAnswered) {
             questionsError.style.display = 'block';
             formIsValid = false;
         } else {
             questionsError.style.display = 'none';
         }
-
+    
         if (!hasDrawn) {
             signatureError.style.display = 'block';
             formIsValid = false;
         } else {
             signatureError.style.display = 'none';
         }
-
+    
         if (formIsValid) {
             sendEmail().then(response => {
                 if (response.success) {
@@ -289,6 +344,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error submitting form:', error);
                 alert('There was an error submitting your form. Please try again.');
             });
+        } else if (firstInvalidInput) {
+            firstInvalidInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            firstInvalidInput.focus();
         }
     });
 
