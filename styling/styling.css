@@ -36,7 +36,9 @@ body{
     align-items: center;
     padding: 0 20px;
 }
-
+.nav.hidden {
+    top: -100px; /* Adjust according to your navbar height */
+}
 .nav-logo p {
     color: blueviolet;
     font-size: 25px;
@@ -49,7 +51,7 @@ body{
 }
 
 .nav-menu ul {
-    display: flex;
+    /* display: flex; */
     margin: 0;
     list-style: none;
     padding-right: 250px;
@@ -57,6 +59,8 @@ body{
 
 .nav-menu ul li {
     margin-left: 20px;
+    display: inline-block;
+    position: relative; 
 }
 
 .nav-menu ul li .link {
@@ -81,6 +85,34 @@ body{
     cursor: pointer;
     font-size: 30px;
     color: blueviolet;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #333; 
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 4px;
+    top: 100%; 
+    left: 0;
+}
+
+.dropdown-menu .dropdown-item {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    box-sizing: border-box;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 .footer{
@@ -229,7 +261,6 @@ p{
     position: relative;
     cursor: pointer;
     margin: 5px;
-    /* width: calc(100% / 4 - 40px);  */
 }
 
 .image-container-ease img {
@@ -238,7 +269,7 @@ p{
     transition: transform 0.3s ease;
 }
 
-.image-container-ease:hover img {
+.image-container-ease img:hover {
     transform: scale(1.05);
 }
 
@@ -247,17 +278,12 @@ p{
     text-decoration: none;
     transition: color 0.3s;
 }
+
 .image-container-ease a:hover {
     color: blueviolet;
     transition: .3s ease-out;
 }
-.image-container-ease img {
-    transition: transform 0.3s ease;
-}
 
-.image-container-ease:hover img {
-    transform: scale(1.05);
-}
 .image-text {
     margin-bottom: 10px;
     color: white;
@@ -509,6 +535,16 @@ p{
     .nav-menu ul li .link {
         padding: 10px 0;
         width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        display: none;
+    }
+
+    .dropdown-menu.show {
+        display: block; 
     }
 
     .hamburger {

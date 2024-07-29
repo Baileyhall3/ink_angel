@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const artistGrid = document.getElementById("artistGrid");
 
     const images = [
-        { file: 'gayle.png', text: 'Gayle Brown', pageLink: 'kyle.html', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@gayle_poppynflo' },
-        { file: 'kyle.jpg', text: 'Kyle Moore', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
+        { file: 'gayle.png', text: 'Gayle Brown', pageLink: 'gayle.html', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@gayle_poppynflo' },
+        { file: 'kyle.jpg', text: 'Kyle Moore', pageLink: 'kyle.html', instaLink: 'https://www.instagram.com/kyle_moore_tattoo/', instaHandle: '@kyle_moore_tattoo' },
         { file: 'kyle_selfie.png', text: 'Kyle Selfie', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
         { file: 'kyle.jpg', text: 'Kyle Dudley', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
         { file: 'kyle.jpg', text: 'Kyle Scheenbly', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
@@ -32,17 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
         const instagramLink = document.createElement("a");
         instagramLink.href = image.instaLink;
         instagramLink.target = "_blank";
-
-        imgContainer.addEventListener('click', () => {
-            window.location.href = image.pageLink;
-        });
+        instagramLink.classList.add("instagram-link");
 
         instagramLink.appendChild(instagramIcon); 
         instagramLink.append(image.instaHandle); 
+
+        imgContainer.addEventListener('click', (event) => {
+            if (!event.target.closest('.instagram-link')) { // Only redirect if not clicking the Instagram link
+                window.location.href = image.pageLink;
+            }
+        });
+
         imgContainer.appendChild(textElement);
         imgContainer.appendChild(imgElement);
         imgContainer.appendChild(instagramLink);
         artistGrid.appendChild(imgContainer);
-    })
+    });
+
 
 });

@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(html => {
             document.getElementById("navbar-placeholder").innerHTML = html;
 
-            // Event listener for scrolling
             var lastScrollTop = 0;
             window.addEventListener("scroll", function () {
                 var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -20,11 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 lastScrollTop = currentScrollTop;
             });
 
-
-            // Get the current page URL
             var currentPath = window.location.pathname;
 
-            // Get the link elements
             var homeLink = document.getElementById("home-link");
             var aboutLink = document.getElementById("about-link");
             var artistsLink = document.getElementById("artists-link");
@@ -39,15 +35,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 artistsLink.classList.add("active");
             } else if (currentPath.includes("contact.html")) {
                 contactLink.classList.add("active");
-            }
+            } else if (currentPath.includes("kyle.html")) {
+                artistsLink.classList.add("active");
+            } else if (currentPath.includes("gayle.html")) {
+                artistsLink.classList.add("active");
+            } 
 
-            // Hamburger menu toggle
             var hamburger = document.getElementById("hamburger");
             var navMenu = document.getElementById("nav-menu");
 
             hamburger.addEventListener("click", function () {
                 navMenu.classList.toggle("show");
             });
+
         })
         .catch(error => console.error('Error loading navbar:', error));
+    
 });
