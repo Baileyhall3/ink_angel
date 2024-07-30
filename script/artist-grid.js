@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const instagramIcon = document.createElement("i");
         instagramIcon.classList.add("fa", "fa-instagram");
-        instagramIcon.style.fontSize = "18px";
+        instagramIcon.style.fontSize = "16px";
         instagramIcon.style.color = "white";
         instagramIcon.style.marginRight = "8px";
 
