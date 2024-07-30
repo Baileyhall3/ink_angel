@@ -24,6 +24,20 @@ body{
     min-height: 100vh;
     background: rgba(39, 39, 39, 0.4);
 }
+
+.main_body {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+    width: 100%;
+}
+
+.home_body {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
 .nav {
     position: fixed;
     top: 0;
@@ -271,7 +285,7 @@ p{
     text-align: center;
     position: relative;
     cursor: pointer;
-    margin: 5px;
+    margin: 25px;
 }
 
 .image-container-ease img {
@@ -325,14 +339,22 @@ p{
 
 .artist-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     padding: 0;
 }
 .artist-grid img {
     width: 100%;
-    height: 200px;
+    height: 300px;
     border-radius: 8px;
+}
+
+.instagram-link {
+    display: flex;
+    align-items: center; /* Vertically centers the icon and handle */
+    justify-content: center;
+    text-decoration: none; /* Removes underline from the link */
+    color: white; /* Set a consistent color for the link text */
 }
 
 .services{
@@ -350,9 +372,9 @@ p{
 }
 .text-box {
     margin-left: 10px;
-    width: 80%;
+    width: 49%;
     box-sizing: border-box; 
-    padding: 20px;
+    padding-left: 20px;
 }
 .text-box1 {
     margin-left: 10px;
@@ -421,6 +443,30 @@ p{
 .info{
     display: inline-flex;
     width: 100%;
+}
+
+.time-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.time-day,
+.time-hour {
+    display: inline-block;
+}
+
+.time-day {
+    width: calc(50% - 12.5px); /* 50% width minus half of the gap */
+    text-align: left;
+}
+
+.time-hour {
+    width: calc(50% - 12.5px); /* 50% width minus half of the gap */
+    text-align: right;
+    padding-left: 25px; /* Ensures 25px gap between day and time */
 }
 
 /* Image carousel */
@@ -524,6 +570,92 @@ p{
 .artist-image-container {
     text-align: center;
     position: relative;
+}
+
+.full-container {
+    /* border: 2px solid blueViolet; */
+    box-sizing: border-box;
+    width: 100%;
+    /* max-width: 800px;  */
+    margin: 0 auto; 
+    padding: 20px; 
+    background-color: white;
+}
+
+form {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-size: 16px;
+    padding-top: 25px;
+}
+
+.form-group-consult {
+    flex: 0 0 48%;
+    margin-bottom: 15px;
+}
+
+.item {
+    width: 100%; 
+    padding: 10px;
+    border: 2px solid blueViolet;
+    border-radius: 4px;
+    box-sizing: border-box;
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;         
+}
+
+.item[type="date"] {
+    -webkit-appearance: none; 
+    -moz-appearance: none;    
+    appearance: none;         
+    width: 100%;
+}
+
+.item:focus {
+    border-color: blueViolet;
+    outline: none;
+}
+
+.item.error {
+    border: 2px solid red;
+}
+
+.error-message {
+    color: red;
+    display: none;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: blueViolet;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    width: auto;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: darkviolet;
+}
+
+.time-container {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 25px; 
+    background-color: darkgray;
 }
 
 /* Mobile styles */

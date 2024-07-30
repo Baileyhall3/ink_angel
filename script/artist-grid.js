@@ -5,18 +5,19 @@ document.addEventListener("DOMContentLoaded", function () {
     const images = [
         { file: 'gayle.png', text: 'Gayle Brown', pageLink: 'gayle.html', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@gayle_poppynflo' },
         { file: 'kyle.jpg', text: 'Kyle Moore', pageLink: 'kyle.html', instaLink: 'https://www.instagram.com/kyle_moore_tattoo/', instaHandle: '@kyle_moore_tattoo' },
-        { file: 'kyle_selfie.png', text: 'Kyle Selfie', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
-        { file: 'kyle.jpg', text: 'Kyle Dudley', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
-        { file: 'kyle.jpg', text: 'Kyle Scheenbly', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
-
+        { file: 'kyle_selfie.png', text: 'Sinead Parkin', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
+        { file: 'kyle.jpg', text: 'Chloe Tammie', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
+        { file: 'kyle.jpg', text: 'Laura Baxter', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
+        { file: 'kyle.jpg', text: 'Luke Clouston', pageLink: 'https://www.instagram.com/gayle_poppynflo/', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
     ];
 
     images.forEach(image => {
         const imgContainer = document.createElement("div");
         imgContainer.classList.add("image-container-ease");
 
-        const textElement = document.createElement("p");
+        const textElement = document.createElement("h3");
         textElement.classList.add("image-text");
+        textElement.style.fontWeight = "normal";
         textElement.textContent = image.text;
 
         const imgElement = document.createElement("img");

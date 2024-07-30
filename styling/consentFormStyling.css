@@ -3,6 +3,7 @@
 * {
     box-sizing: border-box; /* Ensure consistent box-sizing */
     font-family: 'Poppins', 'sans-serif';
+    
 }
 
 .wrapper {
@@ -37,7 +38,7 @@
 }
 
 h2{
-  font-size: 28px;
+  /* font-size: 28px; */
   display: flex;
   margin-bottom: 0;
 }
