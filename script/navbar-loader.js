@@ -4,26 +4,26 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(html => {
             document.getElementById("navbar-placeholder").innerHTML = html;
 
-            var lastScrollTop = 0;
-            window.addEventListener("scroll", function () {
-                var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                var navbar = document.querySelector(".nav");
+            // var lastScrollTop = 0;
+            // window.addEventListener("scroll", function () {
+            //     var currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            //     var navbar = document.querySelector(".nav");
 
-                // Check the scroll direction and hide/show the navbar accordingly
-                if (currentScrollTop > lastScrollTop) {
-                    navbar.classList.add("hidden");
-                } else {
-                    navbar.classList.remove("hidden");
-                }
+            //     if (currentScrollTop > lastScrollTop) {
+            //         navbar.classList.add("hidden");
+            //     } else {
+            //         navbar.classList.remove("hidden");
+            //     }
 
-                lastScrollTop = currentScrollTop;
-            });
+            //     lastScrollTop = currentScrollTop;
+            // });
 
             var currentPath = window.location.pathname;
 
             var homeLink = document.getElementById("home-link");
             var aboutLink = document.getElementById("about-link");
             var artistsLink = document.getElementById("artists-link");
+            var shopLink = document.getElementById("shop-link");
             var contactLink = document.getElementById("contact-link");
 
             // Determine which link should be active based on the current page
@@ -39,7 +39,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 artistsLink.classList.add("active");
             } else if (currentPath.includes("gayle.html")) {
                 artistsLink.classList.add("active");
-            } 
+            } else if (currentPath.includes("chloe.html")) {
+                artistsLink.classList.add("active");
+            } else if (currentPath.includes("luke.html")) {
+                artistsLink.classList.add("active");
+            } else if (currentPath.includes("laura.html")) {
+                artistsLink.classList.add("active");
+            } else if (currentPath.includes("sinead.html")) {
+                artistsLink.classList.add("active");
+            } else if (currentPath.includes("shop.html")) {
+                shopLink.classList.add("active");
+            }
 
             var hamburger = document.getElementById("hamburger");
             var navMenu = document.getElementById("nav-menu");

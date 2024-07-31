@@ -12,6 +12,24 @@
     line-height: 1.5;
 } */
 
+::-webkit-scrollbar {
+    width: 12px; /* You can adjust the width to your liking */
+    background-color: #f2f2f2; /* Background color of the track */
+}
+
+/* Define the color and style of the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #c27fff; /* Color of the thumb */
+    border-radius: 10px; /* Rounded corners for the thumb */
+    border: 2px solid #f2f2f2; /* Optional: Border around the thumb for better contrast */
+}
+
+/* Define the style when hovering over the scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a45ff9; /* Darker shade for hover effect */
+}
+
+
 body{
     background: black;
     background-attachment: fixed;
@@ -23,13 +41,7 @@ body{
     align-items: center;
     min-height: 100vh;
     background: rgba(39, 39, 39, 0.4);
-}
-
-.main_body {
-    max-width: 1100px;
-    margin: 0 auto;
-    overflow: hidden;
-    width: 100%;
+    padding-bottom: 25px;
 }
 
 .home_body {
@@ -48,15 +60,20 @@ body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 0 20px;
+    padding: 20px;
 }
 .nav.hidden {
     top: -100px; 
 }
 .nav-logo p {
-    color: blueviolet;
+    color: #c27fff;
     font-size: 25px;
     font-weight: 600;
+}
+
+.nav-logo a {
+    text-decoration: none;
+    color: #c27fff;
 }
 
 .nav-menu {
@@ -81,16 +98,16 @@ body{
     text-decoration: none;
     font-weight: 500;
     color: #fff;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
 }
 
 .nav-menu li a:hover {
-    color: blueviolet;
+    color: #c27fff;
     transition: .3s ease-out;
 }
 
 .link.active {
-    color: blueviolet;
+    color: #c27fff;
     border-bottom: 2px solid #8A2BE2FF;
 }
 
@@ -98,7 +115,7 @@ body{
     display: none;
     cursor: pointer;
     font-size: 30px;
-    color: blueviolet;
+    color: #c27fff;
 }
 
 .dropdown {
@@ -162,7 +179,7 @@ body{
 }
 
 .link.active{
-    color: blueviolet;
+    color: #c27fff;
     border-bottom: 2px solid #8A2BE2FF;
 }
 
@@ -171,7 +188,7 @@ h1{
     /* padding-left: 40px; */
 }
 h2{
-    color: blueviolet;
+    color: #c27fff;
     padding-bottom: 25px;
 }
 h3{
@@ -186,6 +203,11 @@ p{
     margin: 0 auto;
     overflow: hidden;
 }
+
+.max-size {
+    max-width: 1100px;
+}
+
 .home_body {
     display: flex;
     flex-wrap: wrap;
@@ -207,7 +229,7 @@ p{
 }
 
 .contact a {
-    color: blueviolet;
+    color: #c27fff;
     text-decoration: none;
 }
 
@@ -218,13 +240,13 @@ p{
 }
 
 .about a {
-    color: blueviolet;
+    color: #c27fff;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .about a:hover {
-    color: blueviolet;
+    color: #c27fff;
     transition: .3s ease-out;
 }
 
@@ -241,7 +263,7 @@ p{
 }
 
 .artist-text a:hover {
-    color: blueviolet;
+    color: #c27fff;
     transition: .3s ease-out;
 }
 
@@ -267,7 +289,7 @@ p{
 .images{
     display: flex;
     flex-wrap: wrap;
-    padding-top: 50px;
+    padding-top: 25px;
     align-content: center;
     justify-content: center;
 }
@@ -279,22 +301,26 @@ p{
 }
 .image-grid img {
     width: 100%;
-    height: 100%;
+    height: 100%; /* Maintain aspect ratio */
+    display: block; /* Ensures no extra space around the image */
     border-radius: 8px;
 }
 
 .image-container {
-    text-align: center;
+    width: 100%;
+    height: 100%;
     position: relative;
     cursor: pointer;
+    overflow: hidden; /* Ensure image does not overflow its container */
 }
+
 .image-container a {
     color: #f2f2f2;
     text-decoration: none;
     transition: color 0.3s;
 }
 .image-container a:hover {
-    color: blueviolet;
+    color: #c27fff;
     transition: .3s ease-out;
 }
 
@@ -322,7 +348,7 @@ p{
 }
 
 .image-container-ease a:hover {
-    color: blueviolet;
+    color: #c27fff;
     transition: .3s ease-out;
 }
 
@@ -344,6 +370,7 @@ p{
     opacity: 0;
     transition: opacity 0.3s;
 }
+
 .image-container:hover .image-overlay {
     opacity: 1;
 }
@@ -392,6 +419,7 @@ p{
     width: 49%;
     box-sizing: border-box; 
     padding-left: 20px;
+    padding-right: 20px;
 }
 .text-box1 {
     margin-left: 10px;
@@ -411,7 +439,7 @@ p{
 
 }
 .shop-info {
-    margin-top: 50px;
+    margin-top: 25px;
     background-color: white;
     overflow: hidden;
     position: relative;
@@ -549,7 +577,7 @@ p{
     transition: color 0.3s;
 }
 .text a:hover {
-    color: blueviolet;
+    color: #c27fff;
     transition: .3s ease-out;
 }
 
@@ -595,7 +623,7 @@ p{
 }
 
 .full-container {
-    /* border: 2px solid blueViolet; */
+    /* border: 2px solid #c27fff; */
     box-sizing: border-box;
     width: 100%;
     /* max-width: 800px;  */
@@ -622,7 +650,7 @@ form {
 .item {
     width: 100%; 
     padding: 10px;
-    border: 2px solid blueViolet;
+    border: 2px solid #c27fff;
     border-radius: 4px;
     box-sizing: border-box;
     -webkit-appearance: none; 
@@ -638,7 +666,7 @@ form {
 }
 
 .item:focus {
-    border-color: blueViolet;
+    border-color: #c27fff;
     outline: none;
 }
 
@@ -659,7 +687,7 @@ textarea {
 
 button {
     padding: 10px 20px;
-    background-color: blueViolet;
+    background-color: #c27fff;
     color: white;
     border: none;
     border-radius: 4px;
@@ -676,8 +704,10 @@ button:hover {
 .time-container {
     box-sizing: border-box;
     /* width: 50%; */
-    padding: 25px; 
-    background-color: darkgray;
+    color: white;
+    
+    padding: 0 25px; 
+    /* background-color: darkgray; */
 }
 
 /* Mobile styles */
@@ -752,12 +782,6 @@ button:hover {
         font-size: 14px;
     }
 
-    .images {
-        display: flex;
-        flex-direction: column; /* Stack items vertically */
-        align-items: center; /* Center items horizontally */
-    }
-
     .image-container-ease {
         width: 100%; /* Make containers responsive */
         max-width: 300px; /* Limit the max width for better appearance */
@@ -788,7 +812,7 @@ button:hover {
     }
 
     .image-container-ease a:hover {
-        color: blueviolet;
+        color: #c27fff;
         transition: .3s ease-out;
     }
 
@@ -835,5 +859,9 @@ button:hover {
     .artist-contact {
         width: 100%;
         font-size: 14px;
+    }
+
+    .form-group-consult {
+        justify-content: center;
     }
 }

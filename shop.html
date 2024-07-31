@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styling/styling.css">
+        <link rel ="icon" type="image/x-icon" href="images/ink_angel_logo.jpg">
+        <script src="script/navbar-loader.js" defer></script>
+        <script src="script/footer-loader.js" defer></script>
+        <script src="script/shop.js" defer></script>
+        <title>Ink Angel</title>
+    </head>
+    <body>
+    <div id="navbar-placeholder"></div>
+    <div class="wrapper">
+        <div class="main_body">
+
+            <div class="home_body">
+                <img src="images/ink_angel_shopfront1.jpg" alt="Gayle and Kyle" width="500" height="500" float="left">
+                <div class="text-box1">
+                    <h1>TATTOO VOUCHER</h1>
+                    <p class="about" style="color: #c27fff;">£30 - £800</p>
+                    <br>
+                    <p class="about">
+                        Give the perfect gift of a tattoo to someone you care about (or yourself!) by purchasing an Ink Angel tattoo studio
+                        voucher. 
+                        <br>Simply select the amount of tattoo credit you would like on your voucher and the quantity, then you're good to go!
+                    </p>
+                    <br>
+                    <p class="about">
+                        Vouchers are available online and also from our studio on Burrow Street South Shields.
+                    </p>
+                    <br>
+                    <div class="form-group-consult">
+                        <label for="voucherValue" style="color: #c27fff;">Value (£)</label>
+                        <input class="item" type="number" id="voucherValue" name="voucherValue" min="30" max="800" step="5" value="30">
+                    </div>
+                    <br>
+                    <div class="form-group-consult" style="padding-top: 10px; display: flex; align-items: center;">
+                        <button type="button" onclick="updateQuantity(-1)">-</button>
+                        <input class="item" style="width: 10%;" type="number" id="quantity" name="quantity" min="1" step="1" value="1">
+                        <button type="button" onclick="updateQuantity(1)">+</button>
+                        <button type="button" onclick="purchaseVoucher()">Purchase</button>
+                    </div>
+                    <p class="about" style="color: #c27fff;">Total: <span id="totalValue">£30</span></p>
+
+                    <br>
+                    <p class="about" style="color: #c27fff;">Terms and Conditions </p>
+                    <p class="about">&#8226; Tattoo vouchers may not be exchanged for cash.</p>
+                    <p class="about">&#8226; It is your responsibility to keep your voucher safe, we are not responsible for you losing your voucher.</p>
+                    <p class="about">&#8226; Vouchers can be used up to 1 year from purchase date.</p>
+                    <p class="about">&#8226; A single voucher may be used with 1 artist only.</p>
+                    <p class="about">&#8226; Ink Angel reserves the right to change these terms and conditions at any time, without prior norice.</p>
+                    <br>
+                    
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="footer-placeholder"></div>
+    </body>
+</html>

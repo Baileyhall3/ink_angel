@@ -12,12 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
         { file: '007.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
         { file: '008.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
         { file: '009.jpg', text: 'By Gayle - ', link: 'https://www.instagram.com/gayle_poppynflo/' },
-
     ];
 
-    // const shuffledImages = shuffleArray(images);
-
     images.forEach(image => {
+        const linkWrapper = document.createElement("a");
+        linkWrapper.href = image.link;
+        linkWrapper.target = "_blank"; 
+
         const imgContainer = document.createElement("div");
         imgContainer.classList.add("image-container");
 
@@ -43,7 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
         overlay.appendChild(overlayText);
         imgContainer.appendChild(imgElement);
         imgContainer.appendChild(overlay);
-        imageGrid.appendChild(imgContainer);
+
+        linkWrapper.appendChild(imgContainer);
+        imageGrid.appendChild(linkWrapper);
     });
-    
+
 });
