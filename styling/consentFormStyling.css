@@ -190,3 +190,8 @@ canvas {
 .text-box a {
     color: blueviolet;
 }
+
+.text-line p {
+    margin-bottom: 10px;
+    padding-bottom: 0;
+}

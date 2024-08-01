@@ -19,7 +19,7 @@
                         <div class="form-container" id="form-container">
 
                             <div class="title-img">
-                                <h2>Consent to Tattoo Procedure</h2>
+                                <h2>Ink Angel Consent to Tattoo Procedure</h2>
                                 <img src="images/Ink_Angel_Logo_Black.png" alt="logo" class="top-right-logo" width="100" height="100">
                             </div>
                             
@@ -121,13 +121,28 @@
                                         <label for="ack"> I acknowledge the above</label>
                                     </div>
                                 </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="artist">Name of Artist*</label>
+                                        <select class="item" id="artistSelect" name="artist">
+                                            <option value="">Please select</option>
+                                            <option value="Gayle Brown">Gayle Brown</option>
+                                            <option value="Kyle Moore">Kyle Moore</option>
+                                            <option value="Laura Baxter">Laura Baxter</option>
+                                            <option value="Chloe Tammie">Chloe Tammie</option>
+                                            <option value="Sinead Parkin">Sinead Parkin</option>
+                                            <option value="Luke Clouston">Luke Clouston</option>
+                                        </select>
+                                    </div>
+                                </div>
                         
                                 <div class="form-row">
                                     <div class="form-group">
-                                        <label for="signature">Signature:</label>
+                                        <label for="signature">Client Signature:</label>
                                         <canvas id="signatureCanvas"></canvas>
                                         <input type="hidden" name="signature" id="signatureInput" >
-                                        <div id="signatureError" style="color: red; display: none;">Signature is required.</div>
+                                        <div id="signatureError" style="color: red; display: none; font-size: 14px;">Signature is required.</div>
                                     </div>
                                 </div>
                                 

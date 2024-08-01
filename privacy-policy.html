@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="styling/consentFormStyling.css">
         <link rel ="icon" type="image/x-icon" href="images/ink_angel_logo.jpg">
         <script src="script/consent-form.js" defer></script>
-        <script src="https://smtpjs.com/v3/smtp.js"></script>
         <title>Ink Angel</title>
     </head>
     <body>
@@ -19,116 +18,86 @@
                         <div class="form-container" id="form-container">
 
                             <div class="title-img">
-                                <h2>Privacy Policy</h2>
+                                <h2>Ink Angel Customer Privacy Notice</h2>
                                 <img src="images/Ink_Angel_Logo_Black.png" alt="logo" class="top-right-logo" width="100" height="100">
                             </div>
                             
                             <p>This privacy notice tells you what to expect us to do with your personal information.</p>
                             <form id="consultationForm" action="#" novalidate>
-
-                                <input type="hidden" name="access_key" value="b6f49a91-3b71-4493-bbd7-e4c16bd8a3cf">
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="fullName">Full Name*</label>
-                                        <input class="item" type="text" id="fullName" name="fullName">
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="email">Email Address*</label>
-                                        <input class="item" type="email" id="email" name="email">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="address">Address*</label>
-                                    <textarea class="item" id="address" name="address"> </textarea>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="phone">Phone Number*</label>
-                                        <input class="item" type="tel" id="phone" name="phone" >
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="dob">Date of Birth*</label>
-                                        <input class="item" type="date" id="dob" name="dob">
-                                    </div>
-                                </div>
-                        
-                                <div class="form-row">
-                                    Have you ever suffered from the following? Tick yes where applicable
-                                </div>
                                 
-                                <div id="questionsContainer"></div>
-                                
-                                <div class="form-row">
-                                    If you answered yes to any of the above, you should consult a GP before your appointment.
+                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px; padding-top: 15px; margin-bottom: 0;">Contact Details</p>
+                                <div class="text-line">
+                                    <p>Post: 2 Burrow Street, South Shields, Tyne and Wear, NE33 1PP, GB</p>
+                                    <p>Telephone: 0191 447 4343</p>
+                                    <p>Email: inkangelstudioinfo@gmail.com</p>
                                 </div>
-                                
-                                <p2>Please read the following carefully:</p2>
 
-                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px; padding-top: 15px;;">I acknowledge by signing this agreement that I have been given opportunity to ask any questions I have about the
-                                    tattoo and that all of my questions have been answered. 
-                                    <br>I acknowledge I have been advised of the facts and matters below and I agree as follows:</p>
-                                <div class="ack-row">
-                                    <p>&#8226; If I have any condition that might affect the healing of this tattoo, I will advise my tattooer.</p>
-                                </div>
-                                <div class="ack-row">
-                                    <p>&#8226; I am not pregnant or nursing, I am not under the influence of alcohol or drugs.</p>
-                                </div>
-                                <div class="ack-row">
-                                    <p>&#8226; I acknowledge that infection is always possible as a result of the obtaining of a tattoo, particularly in the event that I
-                                        do not take care of my tattoo. I have received aftercare instructions and I agree to follow them while my tattoo is
-                                        healing. I agree that any touch-up work needed, due to my own negligence, will be done at my own expense.
-                                    </p>
-                                </div>
-                                <div class="ack-row">
-                                    <p>&#8226; I realise that variations in colour and design may exist between any tattoo as selected by me and as ultimately applied
-                                        to my body. I understand that if my skin colour is dark, the colours will not appear as bright as they do on light skin.
-                                    </p>
-                                </div>
-                                <div class="ack-row">
-                                    <p>&#8226; I acknowledge that a tattoo is a permanent change to my appearance. To my knowledge, I do not have a physical,
-                                        mental or medical impairment or disability which might affect my judgement in deciding to proceed with the tattoo.
-                                    </p>
-                                </div>
-                                <div class="ack-row">
-                                    <p>&#8226; I acknowledge I am over the age of 18 and that I have truthfully represented to my tattooer that the obtaining of a
-                                        tattoo is by my choice alone. I consent to the application of the tattoo and to any actions or conduct of the staff of
-                                        the tattoo shop necessary to perform the tattoo procedure.
-                                    </p>
-                                </div>
-                                <div class="ack-row">
-                                    <p>&#8226; I acknowledge that any damage to my own personal property due to the process of tattooing, is my own
-                                        responsibility.
-                                    </p>
-                                </div>
-                                <div class="ack-row">
-                                    <p>&#8226; I acknowledge that through signing this consent form, I am also agreeing to Ink Angel's Privacy Policy.
-                                    </p>
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="radio-group" style="padding-top: 10px; gap: 5px;">
-                                        <input class="ackItem" type="checkbox" id="ack" name="ack" value="Acknowledgement" >
-                                        <label for="ack"> I acknowledge the above</label>
+                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px; padding-top: 15px; margin-bottom: 0;">Information we collect, use, and why</p>
+                                <div class="text-line">
+                                    <p style="margin-bottom: 15px;">We collect or use the following information to comply with legal requirements:</p>
+                                    <div style="margin-left: 25px;">
+                                        <p>&#8226; Name</p>
+                                        <p>&#8226; Contact information</p>
+                                        <p>&#8226; Health and safety information</p>
+                                        <p>&#8226; Signature</p>
                                     </div>
                                 </div>
-                        
-                                <div class="form-row">
-                                    <div class="form-group">
-                                        <label for="signature">Signature:</label>
-                                        <canvas id="signatureCanvas"></canvas>
-                                        <input type="hidden" name="signature" id="signatureInput" >
-                                        <div id="signatureError" style="color: red; display: none;">Signature is required.</div>
+
+                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px; padding-top: 15px; margin-bottom: 0;">Lawful Bases</p>
+                                <div class="text-line">
+                                    <p style="margin-bottom: 15px;">Our lawful bases for collecting or using personal information to provide services and goods are:</p>
+                                    <div style="margin-left: 25px;">
+                                        <p>&#8226; Consent</p>
+                                        <p>&#8226; Legal obligation</p>
                                     </div>
                                 </div>
+
+                                <div class="text-line">
+                                    <p style="margin-bottom: 15px;">Our lawful bases for collecting or using personal information for legal requirements are:</p>
+                                    <div style="margin-left: 25px;">
+                                        <p>&#8226; Consent</p>
+                                        <p>&#8226; Legal obligation</p>
+                                    </div>
+                                </div>
+
+                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px; padding-top: 15px; margin-bottom: 0;">Where we get personal information from</p>
+                                <div class="text-line">
+                                    <p>We will only ever collect personal information from yourself. Ink Angel does not and will not gather information about their clients or customers from third-parties.</p>
+                                </div>
+
+                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px; padding-top: 15px; margin-bottom: 0;">How long we keep information</p>
+                                <div class="text-line">
+                                    <p>Ink Angel are required to keep personal information collected from consent forms for 3 years. We NEVER share this information with anyone apart from your tattoo artist, the shop owner and the emergency 
+                                        services where required.
+                                    </p>
+                                </div>
+
+                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px; padding-top: 15px; margin-bottom: 0;">How wek keep data secure</p>
+                                <div class="text-line">
+                                    <p>Rest assured, all data provided to us by you is kept and stored securely. We take data protection very seriously, and always ensure that your data is only ever available to the people who need it,
+                                        i.e. the shop owner and the artist providing your service.
+                                    </p>
+                                </div>
+
+                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px; padding-top: 15px; margin-bottom: 0;">Your Data Protection Rights</p>
+                                <div class="text-line">
+                                    <p style="margin-bottom: 15px;">Under data protection law, you have rights including:</p>
+                                    <p>Your right of access - You have the right to ask us for copies of your personal data.</p>
+                                    <p>Your right to rectification - You have the right to ask us to rectify personal data you think is inaccurate. You also have the right to ask us to complete information you think is incomplete.</p>
+                                    <p>Your right to erasure - You have the right to ask us to erase your personal data in certain circumstances.</p>
+                                    <p>Your right to restriction of processing - You have the right to ask us to restrict the processing of your personal data in certain circumstances.</p>
+                                    <p>Your right to object to processing - You have the right to object to the processing of your personal data in certain circumstances.</p>
+                                    <p>Your right to data portability - You have the right to ask that we transfer the personal data you gave us to another organisation, or to you, in certain circumstances.</p>
+                                    <p>Your right to withdraw consent - When we use consent as our lawful basis you have the right to withdraw your consent.</p>
+                                    <p>You don’t usually need to pay a fee to exercise your rights. If you make a request, we have one calendar month to respond to you.</p>
+                                    <p>To make a data protection rights request or to discuss any of the points provided in this privacy notice, please contact us using the contact details at the top of this privacy notice.</p>
+                                </div>
+
+                                <p style="font-weight: bold; font-size: 16px; padding-bottom: 0px; padding-top: 15px; margin-bottom: 0;">Last Updated</p>
+                                <div class="text-line">
+                                    <p style="margin-bottom: 15px;">1st August 2024</p>
+                                </div>
+
                             </form>
                             
                         </div>

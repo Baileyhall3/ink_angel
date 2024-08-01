@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const address = document.getElementById("address");
     const phone = document.getElementById("phone");
     const dob = document.getElementById("dob");
+    const artist = document.getElementById("artistSelect");
     const ack = document.getElementById("ack");
     const signatureInput = document.getElementById("signatureInput");
     const signatureError = document.getElementById('signatureError');
@@ -85,7 +86,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             Address: ${address.value} <br>
                             Phone Number: ${phone.value} <br>
                             Date Of Birth: ${dob.value}<br>
-                            Acknowledgement: ${ack.checked ? 'Yes' : 'No'}<br>
+                            Artist: ${artist.value}<br>
+                            Acknowledgement: ${ack.checked ? 'Yes' : 'No'}<br><br>
                             <strong>Medical Questions:</strong><br>`
 
         questions.forEach((question, index) => {
