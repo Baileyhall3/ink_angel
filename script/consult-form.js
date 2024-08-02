@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         Email.send({
+            // UserName: "inkangelstudioinfo@gmail.com",
+            // Password: "4418CEA578712947F9A046F980FBD2262EDC",
             SecureToken: "8389e714-9252-4f98-9503-8912c6534dd9", 
             To: 'inkangelstudioinfo@gmail.com',
             From: "inkangelstudioinfo@gmail.com",
