@@ -28,9 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         Email.send({
-            SecureToken: "1e5ad655-c276-46c2-8216-ef11746f18ff", 
-            To: 'baileyhall271001@gmail.com',
-            From: "baileyhall271001@gmail.com",
+            SecureToken: "8389e714-9252-4f98-9503-8912c6534dd9", 
+            To: 'inkangelstudioinfo@gmail.com',
+            From: "inkangelstudioinfo@gmail.com",
             Subject: `Consultation Form Submitted for ${fullName.value}`,
             Body: bodyMessage,
             Attachments: attachments
