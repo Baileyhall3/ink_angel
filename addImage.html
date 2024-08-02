@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styling/consentFormStyling.css">
+    <link rel="icon" type="image/x-icon" href="images/ink_angel_logo.jpg">
+    <!-- <script type="module" src="./script/insert-clothing.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.js"></script> -->
+
+    
+    <title>Ink Angel</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="main_body">
+            <div class="home_body">
+                <div class="full-container">
+                    <div class="form-container" id="form-container">
+                        <div class="title-img">
+                            <h2>Insert New Record</h2>
+                            <img src="images/Ink_Angel_Logo_Black.png" alt="logo" class="top-right-logo" width="100" height="100">
+                        </div>
+                        <!-- <p>This form must be completed prior to your appointment.</p> -->
+                        <form id="insertForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="column1">Title</label>
+                                    <input class="item" type="text" id="title" name="title" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="column1">Description</label>
+                                    <textarea class="item" id="desc" name="desc"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="column1">Price (£)</label>
+                                    <input class="item" type="number" id="price" name="price" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="size">Size</label>
+                                    <select class="item" id="size" name="size">
+                                        <option value="">Please select</option>
+                                        <option value="Small">Small</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Large">Large</option>
+                                        <option value="Extra Large">Extra Large</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="type">Clothing Type</label>
+                                    <select class="item" id="type" name="type">
+                                        <option value="">Please select</option>
+                                        <option value="T-shirt">T-shirt</option>
+                                        <option value="Jumper">Jumper</option>
+                                        <option value="Vest">Vest</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="gender">Gender</label>
+                                    <select class="item" id="gender" name="gender">
+                                        <option value="">Please select</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Unisex">Unisex</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="colour">Colour</label>
+                                    <input class="item" type="text" id="colour" name="colour" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="stock">Stock Count</label>
+                                    <input class="item" type="number" id="stock" name="stock" min="1" step="1" value="1">
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button type="submit">Add Record</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest"></script>
+    <script src="script/insert-clothing.js"></script>
+
+    
+    <!-- <script>
+        const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3pmaXFnbnJvbm14b3B2cHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI1OTA0MzMsImV4cCI6MjAzODE2NjQzM30.MXkj7nwXXClxYyyC9nP6-KCCHUrji3NRGev4Dff7lfo';
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        document.getElementById('insertForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const desc = document.getElementById('desc').value;
+            const price = document.getElementById('price').value;
+            const size = document.getElementById('size').value;
+            const type = document.getElementById('type').value;
+            const gender = document.getElementById('gender').value;
+            const colour = document.getElementById('colour').value;
+            const stock = document.getElementById('stock').value;
+
+            try {
+                const { data, error } = await supabase
+                    .from('clothing')
+                    .insert([
+                        { 
+                        title: title, 
+                        value: price,
+                        size: size, 
+                        description: desc, 
+                        colour: colour,
+                        stock_count: stock, 
+                        type: type, 
+                        gender: gender, 
+                        }
+                    ]);
+                
+                if (error) {
+                    console.error('Error inserting data:', error);
+                } else {
+                    console.log('Data inserted:', data);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        });
+    </script> -->
+</body>
+</html>
