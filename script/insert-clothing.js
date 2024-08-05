@@ -68,8 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="flex-table-cell">${item.colour}</div>
                 <div class="flex-table-cell">${item.stock_count}</div>
                 <div class="flex-table-cell images">${imagesHTML}</div>
-                <div class="flex-table-cell"><span class="add-btn">+</span></div>
-                <div class="flex-table-cell" style="max-width: 25px;"><span class="delete-btn">X</span></div>
+                <div class="flex-table-cell" title="Add image"><span class="add-btn">+</span></div>
+                <div class="flex-table-cell" style="max-width: 25px;" title="Delete record"><span class="delete-btn">X</span></div>
             `;
             gridBody.appendChild(row);
         }
@@ -108,12 +108,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const { error } = await supabaseClient
                 .from(table)
                 .delete()
-                .eq('id', id);
+                .eq(table == 'clothing' ? 'eq' : 'fileName', id);
             
             if (error) {
-                console.error('Error deleting data:', error);
+                console.error(`Error deleting data from ${table}:`, error);
             } else {
-                console.log('Data deleted');
+                console.log(`Data deleted from ${table}`);
+                alert(`Delete from ${table} successful!`);
                 fetchData(); // Refresh the grid
             }
         } catch (error) {
@@ -248,30 +249,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const fileName = imageUrl.split('/').pop();
     
         if (!confirm('Are you sure you want to delete this image?')) return;
+
+        console.log(fileName)
     
         try {
-            // Delete image from the storage bucket
-            const { error: deleteError } = await supabaseClient.storage
-                .from('images')
+            // Delete image from the bucket
+            const { data, error } = await supabaseClient.storage
+                .from('uploads')
                 .remove([fileName]);
     
-            if (deleteError) {
-                throw new Error(`Error deleting image from storage: ${deleteError.message}`);
-            }
+            // if (deleteError) {
+            //     throw new Error(`Error deleting image from storage: ${deleteError.message}`);
+            // }
+
+            await deleteRecord(fileName, 'images')
     
-            // Delete record from the 'images' table
-            const { error: dbError } = await supabaseClient
-                .from('images')
-                .delete()
-                .eq('fileName', fileName);
-    
-            if (dbError) {
-                throw new Error(`Error deleting image metadata from database: ${dbError.message}`);
-            }
-    
-            console.log('Image deleted from storage and database');
-            alert('Image deleted successfully!');
-            fetchData(); // Refresh the grid to reflect the deletion
             modal.style.display = 'none';
     
         } catch (error) {
