@@ -7,6 +7,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="styling/consentFormStyling.css">
     <link rel="icon" type="image/x-icon" href="images/ink_angel_logo.jpg">
+    <link rel="stylesheet" href="https://unpkg.com/croppie/croppie.css">
+    <script src="https://unpkg.com/croppie/croppie.js"></script>
     <!-- <script type="module" src="./script/insert-clothing.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.js"></script> -->
 
@@ -17,7 +19,7 @@
     <div class="wrapper">
         <div class="main_body">
             <div class="home_body">
-                <div class="full-container">
+                <div class="full-container" style="max-width: 1100px;">
                     <div class="form-container" id="form-container">
                         <div class="title-img">
                             <h2>Insert New Record</h2>
@@ -94,57 +96,49 @@
                             </div>
                         </form>
                     </div>
+
+                    <div id="grid-container">
+                        <h2>Clothing Items</h2>
+                        <div class="flex-table">
+                            <div class="flex-table-header">
+                                <div class="flex-table-cell">Title</div>
+                                <div class="flex-table-cell">Desc</div>
+                                <div class="flex-table-cell">Price</div>
+                                <div class="flex-table-cell">Size</div>
+                                <div class="flex-table-cell">Type</div>
+                                <div class="flex-table-cell">Gender</div>
+                                <div class="flex-table-cell">Colour</div>
+                                <div class="flex-table-cell">Stock</div>
+                                <div class="flex-table-cell">Images</div>
+                                <div class="flex-table-cell">Actions</div>
+                                <div class="flex-table-cell" style="max-width: 25px;"></div>
+                            </div>
+                            <!-- Rows will be inserted here dynamically -->
+                            <div id="grid-body"></div>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <p id="modalTitle"></p>
+            <span class="close">&times;</span>
+            <img id="modalImage" src="" alt="Image to Edit">
+            <div class="modal-controls">
+                <button id="cropBtn">Crop</button>
+                <button id="resizeBtn">Resize</button>
+                <button id="replaceBtn">Replace</button>
+                <button id="deleteBtn" style="background-color: red;">Delete</button>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest"></script>
     <script src="script/insert-clothing.js"></script>
-
     
-    <!-- <script>
-        const SUPABASE_URL = 'https://your-supabase-url.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3pmaXFnbnJvbm14b3B2cHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI1OTA0MzMsImV4cCI6MjAzODE2NjQzM30.MXkj7nwXXClxYyyC9nP6-KCCHUrji3NRGev4Dff7lfo';
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-        document.getElementById('insertForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            const title = document.getElementById('title').value;
-            const desc = document.getElementById('desc').value;
-            const price = document.getElementById('price').value;
-            const size = document.getElementById('size').value;
-            const type = document.getElementById('type').value;
-            const gender = document.getElementById('gender').value;
-            const colour = document.getElementById('colour').value;
-            const stock = document.getElementById('stock').value;
-
-            try {
-                const { data, error } = await supabase
-                    .from('clothing')
-                    .insert([
-                        { 
-                        title: title, 
-                        value: price,
-                        size: size, 
-                        description: desc, 
-                        colour: colour,
-                        stock_count: stock, 
-                        type: type, 
-                        gender: gender, 
-                        }
-                    ]);
-                
-                if (error) {
-                    console.error('Error inserting data:', error);
-                } else {
-                    console.log('Data inserted:', data);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        });
-    </script> -->
 </body>
 </html>

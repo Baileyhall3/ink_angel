@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 artistsLink.classList.add("active");
             } else if (currentPath.includes("sinead.html")) {
                 artistsLink.classList.add("active");
-            } else if (currentPath.includes("shop.html")) {
+            } else if (currentPath.includes("voucher.html")) {
                 shopLink.classList.add("active");
             }
 
