@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 artistsLink.classList.add("active");
             } else if (currentPath.includes("voucher.html")) {
                 shopLink.classList.add("active");
+            } else if (currentPath.includes("clothing.html")) {
+                shopLink.classList.add("active");
             }
 
             var hamburger = document.getElementById("hamburger");

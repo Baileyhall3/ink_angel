@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styling/styling.css">
+    <link rel ="icon" type="image/x-icon" href="images/ink_angel_logo.jpg">
+    <script src="script/navbar-loader.js" defer></script>
+    <script src="script/footer-loader.js" defer></script>
+    <title>Ink Angel</title>
+</head>
+<body>
+    <div id="navbar-placeholder"></div>
+    <div class="wrapper">
+        <div class="main_body">
+
+            <div class="home_body">
+                <div id="item-container" class="item-container"></div>
+                <br>
+                <div class="form-group-consult" style="padding-top: 10px; display: flex; align-items: center;">
+                    <button type="button" onclick="updateQuantity(-1)">-</button>
+                    <input class="item" style="width: 10%;" type="number" id="quantity" name="quantity" max="10" min="1" step="1" value="1">
+                    <button type="button" onclick="updateQuantity(1)">+</button>
+                    <button type="button" onclick="purchaseVoucher()">Purchase</button>
+                </div>
+                <p class="about" style="color: #c27fff;">Total: <span id="totalValue"></span></p>
+
+            </div>
+
+        </div>
+    </div>
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest"></script>
+    <script src="script/img-slideshow.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            const SUPABASE_URL = 'https://ssczfiqgnronmxopvpyw.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3pmaXFnbnJvbm14b3B2cHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI1OTA0MzMsImV4cCI6MjAzODE2NjQzM30.MXkj7nwXXClxYyyC9nP6-KCCHUrji3NRGev4Dff7lfo';
+            const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+            const itemContainer = document.getElementById('item-container');
+            const itemQuantity = document.getElementById('quantity');
+            const updatedValue = document.getElementById('totalValue');
+
+            const getItemIdFromURL = () => {
+                const params = new URLSearchParams(window.location.search);
+                return params.get('id');
+            };
+
+            const itemId = getItemIdFromURL();
+
+            const { data: item, error: itemError } = await supabaseClient
+                .from('clothing')
+                .select('*')
+                .eq('id', itemId)
+                .single();
+
+            if (itemError) {
+                console.error('Error fetching item details:', itemError);
+                return;
+            }
+
+            const { data: images, error: imagesError } = await supabaseClient
+                .from('images')
+                .select('*')
+                .eq('clothing_id', itemId);
+
+            if (imagesError) {
+                console.error('Error fetching images:', imagesError);
+                return;
+            }
+
+            itemQuantity.max = item.stock;
+            updatedValue.innerText = item.value;
+
+            const imagesHTML = images.map((img, index) => `
+                <div class="mySlides fade">
+                    <img src="${img.image_url}" style="width:100%; margin-bottom: 0; height: auto;">
+                </div>
+            `).join('');
+
+            const dotsHTML = images.map((_, index) => `
+                <span class="dot" onclick="currentSlide(${index + 1})"></span>
+            `).join('');
+
+            const itemHTML = `
+                <div class="text-box2">
+                    <div class="slideshow-container">
+                        ${imagesHTML}
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <div style="text-align:center; padding-top: 10px;">
+                        ${dotsHTML}
+                    </div>
+                </div>
+                <div class="text-box1">
+                    <h1>${item.title}</h1>
+                    <p class="about">${item.colour}</p>
+                    <p class="about" id="clothingValue" style="color: #c27fff;">£${item.value}</p>
+                    <br>
+                    <p class="about">${item.description}</p>
+                    <p class="about">Size: ${item.size}</p>
+                </div>
+            `;
+
+            itemContainer.innerHTML = itemHTML;
+
+            showSlides(slideIndex);
+        });
+        
+    </script>
+    <script src="script/voucher.js" defer></script>
+</body>
+</html>

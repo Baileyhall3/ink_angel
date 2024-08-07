@@ -1,13 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Supabase
     const SUPABASE_URL = 'https://ssczfiqgnronmxopvpyw.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzY3pmaXFnbnJvbm14b3B2cHl3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjI1OTA0MzMsImV4cCI6MjAzODE2NjQzM30.MXkj7nwXXClxYyyC9nP6-KCCHUrji3NRGev4Dff7lfo';
     const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     const form = document.getElementById('insertForm');
 
-    // Fetch and display clothing data from the database
     const fetchData = async () => {
         try {
             const { data, error } = await supabaseClient
@@ -17,8 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (error) {
                 console.error('Error fetching data:', error);
             } else {
-                console.log('Data fetched:', data);
-                form.reset();
                 displayData(data);
             }
         } catch (error) {
@@ -26,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Fetch and display image from the database
     const fetchImages = async (clothingId) => {
         try {
             const { data, error } = await supabaseClient
@@ -45,8 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Display data in the grid
-    const displayData = async(data) => {
+    const displayData = async (data) => {
         const gridBody = document.getElementById('grid-body');
         gridBody.innerHTML = ''; // Clear existing rows
         for (const item of data) {
@@ -55,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
             row.dataset.id = item.id;
             
             const images = await fetchImages(item.id);
-
             const imagesHTML = images.map(img => `<img src="${img.image_url}" alt="Image">`).join('');
 
             row.innerHTML = `
@@ -79,9 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (confirm("Delete record?") == true) {
                     const row = event.target.closest('.flex-table-row');
                     const id = row.dataset.id;
-                    await deleteRecord(id, 'clothing');
+                    await deleteClothingRecord(id);
                 }
-                
             });
         });
 
@@ -103,19 +95,54 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
-    const deleteRecord = async (id, table) => {
+    const deleteClothingRecord = async (id) => {
         try {
-            const { error } = await supabaseClient
-                .from(table)
+            // Fetch associated images
+            const images = await fetchImages(id);
+
+            // Delete images from storage
+            const fileNames = images.map(img => img.fileName);
+            if (fileNames.length > 0) {
+                await removeFromStorage(fileNames);
+            }
+
+            // Delete image metadata from 'images' table
+            const { error: deleteImagesError } = await supabaseClient
+                .from('images')
                 .delete()
-                .eq(table == 'clothing' ? 'eq' : 'fileName', id);
+                .eq('clothing_id', id);
+
+            if (deleteImagesError) {
+                console.error('Error deleting image metadata:', deleteImagesError);
+            }
+
+            // Delete record from 'clothing' table
+            const { error: deleteClothingError } = await supabaseClient
+                .from('clothing')
+                .delete()
+                .eq('id', id);
+
+            if (deleteClothingError) {
+                console.error('Error deleting clothing data:', deleteClothingError);
+            } else {
+                console.log('Clothing data deleted');
+                fetchData(); // Refresh the grid
+            }
+        } catch (error) {
+            console.error('Error:', error.message);
+        }
+    };
+
+    const removeFromStorage = async (fileNames) => {
+        try {
+            const { error } = await supabaseClient.storage
+                .from('uploads')
+                .remove(fileNames);
             
             if (error) {
-                console.error(`Error deleting data from ${table}:`, error);
+                console.error('Error deleting images from storage:', error);
             } else {
-                console.log(`Data deleted from ${table}`);
-                alert(`Delete from ${table} successful!`);
-                fetchData(); // Refresh the grid
+                console.log('Images deleted from storage');
             }
         } catch (error) {
             console.error('Error:', error.message);
@@ -152,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 console.log('Image metadata saved:', data);
                 alert('Image uploaded successfully!');
-                fetchData(); // Refresh the grid if necessary
+                fetchData(); // Refresh the grid
             }
         } catch (error) {
             console.error('Error:', error.message);
@@ -204,17 +231,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Modal
     const modal = document.getElementById('imageModal');
-    const modalTitle = document.getElementById('modalTitle');
     const modalImage = document.getElementById('modalImage');
     const closeModal = document.querySelector('.modal .close');
-    let currentRow = null
 
     document.addEventListener('click', async (event) => {
-
         if (event.target.matches('.flex-table-cell.images img')) {
-            currentRow = event.target.closest('.flex-table-row');
             const imageUrl = event.target.src;
-            modalTitle.innerText = currentRow.dataset.title;
             modalImage.src = imageUrl;
             modal.style.display = 'block';
         }
@@ -222,26 +244,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     closeModal.addEventListener('click', () => {
         modal.style.display = 'none';
-        currentRow = null;
     });
 
     window.addEventListener('click', (event) => {
         if (event.target === modal) {
             modal.style.display = 'none';
-            // currentRow = null;
         }
-    });
-
-    document.getElementById('cropBtn').addEventListener('click', () => {
-        alert('Crop functionality not implemented yet.');
-    });
-
-    document.getElementById('resizeBtn').addEventListener('click', () => {
-        alert('Resize functionality not implemented yet.');
-    });
-
-    document.getElementById('replaceBtn').addEventListener('click', () => {
-        alert('Replace functionality not implemented yet.');
     });
 
     document.getElementById('deleteBtn').addEventListener('click', async () => {
@@ -249,49 +257,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const fileName = imageUrl.split('/').pop();
     
         if (!confirm('Are you sure you want to delete this image?')) return;
-
-        console.log(fileName)
     
         try {
-            // Delete image from the bucket
-            const { data, error } = await supabaseClient.storage
-                .from('uploads')
-                .remove([fileName]);
-    
-            // if (deleteError) {
-            //     throw new Error(`Error deleting image from storage: ${deleteError.message}`);
-            // }
-
-            await deleteRecord(fileName, 'images')
-    
+            await removeFromStorage([fileName]);
+            await deleteRecord(fileName, 'images');
+            alert('Image delete successful!');
             modal.style.display = 'none';
-    
         } catch (error) {
             console.error(error.message);
             alert('Error deleting image. Please try again.');
         }
     });
-    
-    
-
-    let croppieInstance;
-
-    document.getElementById('cropBtn').addEventListener('click', () => {
-        // Create a Croppie instance
-        croppieInstance = new Croppie(modalImage, {
-            viewport: { width: 100, height: 100 },
-            boundary: { width: 400, height: 400 },
-            showZoomer: true
-        });
-        
-        croppieInstance.bind({
-            url: modalImage.src
-        }).then(() => {
-            croppieInstance.result('blob').then((blob) => {
-                // Handle the cropped image blob here
-            });
-        });
-    });
-
-
 });
