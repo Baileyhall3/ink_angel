@@ -39,8 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 artistsLink.classList.add("active");
             } else if (currentPath.includes("gayle.html")) {
                 artistsLink.classList.add("active");
-            } else if (currentPath.includes("chloe.html")) {
-                artistsLink.classList.add("active");
             } else if (currentPath.includes("luke.html")) {
                 artistsLink.classList.add("active");
             } else if (currentPath.includes("laura.html")) {

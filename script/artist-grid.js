@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { file: 'gayle.png', text: 'Gayle Brown', pageLink: 'gayle.html', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@gayle_poppynflo' },
         { file: 'kyle.jpg', text: 'Kyle Moore', pageLink: 'kyle.html', instaLink: 'https://www.instagram.com/kyle_moore_tattoo/', instaHandle: '@kyle_moore_tattoo' },
         { file: 'kyle_selfie.png', text: 'Sinead Parkin', pageLink: 'sinead.html', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
-        { file: 'kyle.jpg', text: 'Chloe Tammie', pageLink: 'chloe.html', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
         { file: 'kyle.jpg', text: 'Laura Baxter', pageLink: 'laura.html', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
         { file: 'kyle.jpg', text: 'Luke Clouston', pageLink: 'luke.html', instaLink: 'https://www.instagram.com/gayle_poppynflo/', instaHandle: '@kyle_moore_tattoo' },
     ];
